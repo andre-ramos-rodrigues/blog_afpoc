@@ -50,7 +50,6 @@ export const login = (req,res,next) => {
     const { password, ...other } = data[0];
 
     // setting the token in localstorage
-    localStorage.setItem("acess_token", token)
 
     // setting the token in the cookie
     res
@@ -61,6 +60,6 @@ export const login = (req,res,next) => {
 }
 
 export const logout = (req, res) => {
-  localStorage.removeItem("acess_token")
+
   res.clearCookie("access_token").status(200).json("User has been logged out.")
 };
