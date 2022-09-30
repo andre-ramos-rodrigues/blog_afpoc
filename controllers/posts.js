@@ -29,7 +29,13 @@ export const getPost = (req,res,next) => {
 // add a new post
 export const addPost = (req,res,next) => {
   // check if there is a token
-  const token = req.cookies.access_token;
+
+  // using cookies
+  //const token = req.cookies.access_token;
+
+  // using localStorage
+  const token = localStorage.getItem("access_token")
+
   if (!token) return res.status(401).json("Not authenticated!");
 
   // check if the token is correct
@@ -56,7 +62,13 @@ export const addPost = (req,res,next) => {
 // delete a single post
 export const deletePost = (req,res,next) => {
   // check if there is a token
-  const token = req.cookies.access_token;
+
+  // using cookies
+  //const token = req.cookies.access_token;
+
+  // using localStorage
+  const token = localStorage.getItem("access_token")
+
   if (!token) return res.status(401).json("Not authenticated!");
 
   // check if the token is correct
@@ -77,7 +89,12 @@ export const deletePost = (req,res,next) => {
 
 // update a specific post
 export const updatePost = (req, res) => {
-  const token = req.cookies.access_token;
+  // using cookies
+  //const token = req.cookies.access_token;
+
+  // using localStorage
+  const token = localStorage.getItem("access_token")
+  
   if (!token) return res.status(401).json("Not authenticated!");
 
   jwt.verify(token, "jwtkey", (err, userInfo) => {
