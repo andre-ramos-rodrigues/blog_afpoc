@@ -54,6 +54,7 @@ export const addPost = (req,res,next) => {
       if(err) return res.status(500).json(err)
 
       res.set('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
+      res.set('Access-Control-Allow-Origin', 'https://api.cloudinary.com/v1_1/dmqnk9v0d/auto/upload')
       return res.status(200).json("post created successfully")
     })
 })
