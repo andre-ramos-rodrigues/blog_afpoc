@@ -93,8 +93,10 @@ export const deletePost = (req,res,next) => {
 export const updatePost = (req, res) => {
 
   // using cookies
-  const token = req.cookies.access_token;
+  // const token = req.cookies.access_token;
 
+  // using localStorage
+  const token = req.body.token
   if (!token) return res.status(401).json("Not authenticated!");
 
   jwt.verify(token, "jwtkey", (err, userInfo) => {
