@@ -9,6 +9,7 @@ export const getPosts = (req,res,next) => {
   db.query(q, [req.query.cat], (err,data) => {
     if(err) return res.status(500).json(err)
     
+    res.set('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
     return res.status(200).json(data)
   })
 }
@@ -22,6 +23,7 @@ export const getPost = (req,res,next) => {
   db.query(q, [req.params.id], (err,data) => {
     if(err) return res.status(500).json(err)
     
+    res.set('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
     return res.status(200).json(data[0])
   })
 }
@@ -53,6 +55,7 @@ export const addPost = (req,res,next) => {
     db.query(q, [values], (err,data)=>{
       if(err) return res.status(500).json(err)
 
+      res.set('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
       return res.status(200).json("post created successfully")
     })
 })
@@ -78,6 +81,7 @@ export const deletePost = (req,res,next) => {
     db.query(q, [postId, user.id], (err, data) => {
       if (err) return res.status(403).json("You can delete only your post!");
       
+      res.set('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
       return res.json("Post has been deleted!");
     });
   });
@@ -102,6 +106,8 @@ export const updatePost = (req, res) => {
     
     db.query(q, [...values, userInfo.id], (err, data) => {
       if (err) return res.status(500).json(err);
+
+      res.set('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
       return res.json("Post has been updated.");
     });
   });

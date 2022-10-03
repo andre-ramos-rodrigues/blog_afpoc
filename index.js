@@ -26,14 +26,13 @@ app.use("/api/auth", authRoute)
 app.use("/api/users", usersRoute)
 
 // headers
-let origin = req.headers["Origin"]
+/*
 app.use(function(req, res, next) {
- if(origin === "https://brilliant-palmier-9298e8.netlify.app" || origin === "https://api.cloudinary.com/v1_1/dmqnk9v0d/auto/upload") {
-  res.header("Access-Control-Allow-Origin", origin)
- }
+  res.header("Access-Control-Allow-Origin", "https://brilliant-palmier-9298e8.netlify.app"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+*/
 
 // connection
 const PORT = process.env.PORT || 3030
