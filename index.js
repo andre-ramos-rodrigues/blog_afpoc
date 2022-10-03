@@ -11,10 +11,9 @@ const app = express()
 app.use(express.json())
 
 // resolving cors
-const corsConfig = {
-  origin: ["https://afpoc-blog.herokuapp.com"]
-};
-app.use(cors(corsConfig));
+app.use(cors({
+  credentials: true
+}))
 
 // resolving cookies
 app.use(cookieParser())
