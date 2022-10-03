@@ -26,18 +26,12 @@ app.use("/api/auth", authRoute)
 app.use("/api/users", usersRoute)
 
 // headers
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*")
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PATCH, DELETE, OPTIONS"
-  );
-  res.setHeader('Access-Control-Allow-Credentials', true)
-  res.setHeader('content-type', 'application/json');
+let origin = req.headers["Origin"]
+app.use(function(req, res, next) {
+ if(origin === "https://brilliant-palmier-9298e8.netlify.app" || origin === "https://api.cloudinary.com/v1_1/dmqnk9v0d/auto/upload") {
+  res.header("Access-Control-Allow-Origin", origin)
+ }
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 
