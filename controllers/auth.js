@@ -52,11 +52,11 @@ export const login = (req,res,next) => {
       token: token, content: other
     }
 
-    // setting the token in localstorage
-
     // setting the token in the cookie
     res
-      .cookie("access_token", token)
+      .cookie("access_token", token, {
+        httpOnly: true,
+      })
       .status(200)
       .json(response);
   })
@@ -64,5 +64,8 @@ export const login = (req,res,next) => {
 
 export const logout = (req, res) => {
 
-  res.clearCookie("access_token").status(200).json("User has been logged out.")
+  res.clearCookie("access_token", {
+    sameSite:"none",
+    secure:true
+  }).status(200).json("User has been logged out.")
 };
