@@ -31,8 +31,10 @@ export const addPost = (req,res,next) => {
   // check if there is a token
 
   // using cookies
-  const token = req.cookies.access_token;
+  //const token = req.cookies.access_token;
 
+  // using localStorage
+  const token = req.body.token
   if (!token) return res.status(401).json("Not authenticated!");
 
   // check if the token is correct
