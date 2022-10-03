@@ -107,7 +107,7 @@ export const updatePost = (req, res) => {
     db.query(q, [...values, userInfo.id], (err, data) => {
       if (err) return res.status(500).json(err);
 
-      res.set('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
+      res.set('Access-Control-Allow-Origin', '*')
       return res.json("Post has been updated.");
     });
   });
