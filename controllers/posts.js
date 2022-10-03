@@ -107,7 +107,7 @@ export const updatePost = (req, res) => {
     db.query(q, [...values, userInfo.id], (err, data) => {
       if (err) return res.status(500).json(err);
 
-      res.set('Access-Control-Allow-Origin', '*')
+      res.set('Access-Control-Allow-Origin', 'https://api.cloudinary.com/v1_1/dmqnk9v0d/auto/upload')
       return res.json("Post has been updated.");
     });
   });
