@@ -48,6 +48,9 @@ export const login = (req,res,next) => {
     const token = jwt.sign({ id: data[0].iduser }, "jwtkey");
 
     const { password, ...other } = data[0];
+    const response = {
+      token: token, content: other
+    }
 
     // setting the token in localstorage
 
@@ -55,7 +58,7 @@ export const login = (req,res,next) => {
     res
       .cookie("access_token", token)
       .status(200)
-      .json(other);
+      .json(response);
   })
 }
 
