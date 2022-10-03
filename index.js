@@ -36,6 +36,7 @@ app.use((req, res, next) => {
     "Access-Control-Allow-Methods",
     "GET, POST, PATCH, DELETE, OPTIONS"
   );
+  res.setHeader('Access-Control-Allow-Credentials', true)
   res.setHeader('content-type', 'application/json');
   next();
 });
