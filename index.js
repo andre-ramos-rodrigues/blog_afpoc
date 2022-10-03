@@ -11,9 +11,7 @@ const app = express()
 app.use(express.json())
 
 // resolving cors
-app.use(cors({
-  credentials: true
-}))
+cors({credentials: true, origin: true})
 
 // resolving cookies
 app.use(cookieParser())
