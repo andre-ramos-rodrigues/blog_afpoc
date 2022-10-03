@@ -11,7 +11,11 @@ const app = express()
 app.use(express.json())
 
 // resolving cors
-app.use(cors())
+app.use(cors({
+  origin: ["https://brilliant-palmier-9298e8.netlify.app"], // the link of my front-end app on Netlify
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}))
 
 // resolving cookies
 app.use(cookieParser())
@@ -20,6 +24,21 @@ app.use(cookieParser())
 app.use("/api/posts", postRoute)
 app.use("/api/auth", authRoute)
 app.use("/api/users", usersRoute)
+
+// headers
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "https://brilliant-palmier-9298e8.netlify.app"); // the link of my front-end app on Netlify
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PATCH, DELETE, OPTIONS"
+  );
+  res.setHeader('content-type', 'application/json');
+  next();
+});
 
 // connection
 const PORT = process.env.PORT || 3030
