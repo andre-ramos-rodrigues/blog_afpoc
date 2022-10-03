@@ -11,13 +11,12 @@ const app = express()
 app.use(express.json())
 
 // resolving cors
-//app.use(cors())
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://brilliant-palmier-9298e8.netlify.app/"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+const corsConfig = {
+  origin: true,
+  credentials: true,
+};
+app.use(cors(corsConfig));
+app.options('*', cors(corsConfig));
 
 // resolving cookies
 app.use(cookieParser())
