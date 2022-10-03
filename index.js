@@ -12,6 +12,7 @@ app.use(express.json())
 
 // resolving cors
 cors({credentials: true, origin: true})
+app.use(cors())
 
 // resolving cookies
 app.use(cookieParser())
