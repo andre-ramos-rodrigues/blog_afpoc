@@ -11,12 +11,11 @@ const app = express()
 app.use(express.json())
 
 // resolving cors
-const corsConfig = {
-  origin: "*",
-  credentials: true,
-};
-app.use(cors(corsConfig));
-app.options('*', cors(corsConfig));
+app.use(
+  cors({
+    origin: "*"
+  })
+)
 
 // resolving cookies
 app.use(cookieParser())
