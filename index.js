@@ -27,10 +27,8 @@ app.use("/api/users", usersRoute)
 
 // headers
 app.all("*", (req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, PATCH, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "*");
-  res.header("Access-Control-Allow-Credentials", true);
+  res.set('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
+  //res.set('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
   next();
 });
 
