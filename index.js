@@ -12,7 +12,7 @@ app.use(express.json())
 
 // resolving cors
 const corsConfig = {
-  origin: true,
+  origin: "*",
   credentials: true,
 };
 app.use(cors(corsConfig));
