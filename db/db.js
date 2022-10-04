@@ -1,7 +1,7 @@
 import mysql from "mysql2"
 
 export const db = mysql.createPool({
-  connectionLimit : 50,
+  connectionLimit : 750,
   host: 'us-cdbr-east-06.cleardb.net',
   user: 'bd71a4d05fd9b2',
   password: "af7adfbe",
