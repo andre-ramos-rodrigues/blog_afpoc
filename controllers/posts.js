@@ -9,7 +9,6 @@ export const getPosts = (req,res,next) => {
   db.query(q, [req.query.cat], (err,data) => {
     if(err) return res.status(500).json(err)
     
-    res.set('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
     return res.status(200).json(data)
   })
 }
@@ -23,7 +22,6 @@ export const getPost = (req,res,next) => {
   db.query(q, [req.params.id], (err,data) => {
     if(err) return res.status(500).json(err)
     
-    res.set('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
     return res.status(200).json(data[0])
   })
 }
@@ -68,13 +66,11 @@ export const deletePost = (req,res,next) => {
   // using cookies
   // const token = req.cookies.access_token;
 
-  // using localStorage
-  const token = req.body.token
-  if (!token) return res.status(401).json("Not authenticated!");
+  //if (!token) return res.status(401).json("Not authenticated!");
 
   // check if the token is correct
-  jwt.verify(token, "jwtkey", (err, user) => {
-    if (err) return res.status(402).json("Token is not valid!");
+  //jwt.verify(token, "jwtkey", (err, user) => {
+    //if (err) return res.status(402).json("Token is not valid!");
 
     const postId = req.params.id;
     
