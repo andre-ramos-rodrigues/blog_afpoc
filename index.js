@@ -12,7 +12,7 @@ app.use(express.json())
 
 // resolving cors
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app');
   next();
 });
 
