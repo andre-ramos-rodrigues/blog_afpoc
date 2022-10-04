@@ -11,7 +11,7 @@ const app = express()
 app.use(express.json())
 
 // resolving cors
-const origin = "https://afpoc-blog.herokuapp.com"
+const origin = "https://brilliant-palmier-9298e8.netlify.app"
 app.use(
   cors({
     origin: origin,
