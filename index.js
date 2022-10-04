@@ -26,13 +26,13 @@ app.use("/api/auth", authRoute)
 app.use("/api/users", usersRoute)
 
 // headers
-/*
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://brilliant-palmier-9298e8.netlify.app"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+app.all("*", (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, PATCH, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "*");
+  res.header("Access-Control-Allow-Credentials", true);
   next();
 });
-*/
 
 // session
 app.use(session({
