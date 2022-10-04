@@ -53,7 +53,6 @@ export const addPost = (req,res,next) => {
     db.query(q, [values], (err,data)=>{
       if(err) return res.status(500).json(err)
 
-      
       return res.status(200).json("post created successfully")
     })
 })
@@ -70,7 +69,7 @@ export const deletePost = (req,res,next) => {
 
   // check if the token is correct
   //jwt.verify(token, "jwtkey", (err, user) => {
-    //if (err) return res.status(402).json("Token is not valid!");
+  //if (err) return res.status(402).json("Token is not valid!");
 
     const postId = req.params.id;
     
