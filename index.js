@@ -11,7 +11,7 @@ const app = express()
 app.use(express.json())
 
 // resolving cors
-const origin = "https://brilliant-palmier-9298e8.netlify.app"
+const origin = "https://brilliant-palmier-9298e8.netlify.app" || "https://api.cloudinary.com/v1_1/dmqnk9v0d/auto/upload"
 app.use(
   cors({
     origin: origin,
