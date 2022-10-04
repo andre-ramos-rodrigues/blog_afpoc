@@ -34,6 +34,21 @@ app.use(function(req, res, next) {
 });
 */
 
+// session
+app.use(session({
+  name: "blog_session",
+  secret: "778899445566112233",
+  resave: false,
+  saveUninitialized: true,
+  //maxAge: 7200000, // 2 hrs validity
+  cookie: {
+    path: "/",
+    secure: true,
+    sameSite: 'none',
+    //httpOnly: false
+  }
+}))
+
 // connection
 const PORT = process.env.PORT || 3030
 app.listen(PORT, () => {

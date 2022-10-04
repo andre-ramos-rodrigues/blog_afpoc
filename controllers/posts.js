@@ -94,6 +94,7 @@ export const updatePost = (req, res) => {
 
   // using cookies
   const token = req.cookies.access_token;
+  console.log(token)
 
   // using localStorage
   
