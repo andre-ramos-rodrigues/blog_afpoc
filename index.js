@@ -11,13 +11,7 @@ const app = express()
 app.use(express.json())
 
 // resolving cors
-const origin = "https://brilliant-palmier-9298e8.netlify.app" || "https://api.cloudinary.com/v1_1/dmqnk9v0d/auto/upload"
-app.use(
-  cors({
-    origin: origin,
-    credentials: true,
-  })
-)
+app.use(cors())
 
 // resolving cookies
 app.use(cookieParser())
@@ -26,22 +20,6 @@ app.use(cookieParser())
 app.use("/api/posts", postRoute)
 app.use("/api/auth", authRoute)
 app.use("/api/users", usersRoute)
-
-// session
-/*app.use(session({
-  name: "blog_session",
-  secret: "778899445566112233",
-  resave: false,
-  saveUninitialized: true,
-  //maxAge: 7200000, // 2 hrs validity
-  cookie: {
-    path: "/",
-    secure: true,
-    sameSite: 'none',
-    //httpOnly: false
-  }
-}))
-*/
 
 // connection
 const PORT = process.env.PORT || 3030
