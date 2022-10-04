@@ -11,9 +11,11 @@ const app = express()
 app.use(express.json())
 
 // resolving cors
+const origin = "https://afpoc-blog.herokuapp.com"
 app.use(
   cors({
-    origin: "*"
+    origin: origin,
+    credentials: true,
   })
 )
 
