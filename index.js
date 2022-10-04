@@ -11,11 +11,10 @@ const app = express()
 app.use(express.json())
 
 // resolving cors
-app.use(cors({
-  origin: ["https://brilliant-palmier-9298e8.netlify.app"], // the link of my front-end app on Netlify
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}))
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 
 // resolving cookies
 app.use(cookieParser())
@@ -26,14 +25,14 @@ app.use("/api/auth", authRoute)
 app.use("/api/users", usersRoute)
 
 // headers
-app.all("*", (req, res, next) => {
+/*app.all("*", (req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
   //res.set('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
   next();
-});
+});*/
 
 // session
-app.use(session({
+/*app.use(session({
   name: "blog_session",
   secret: "778899445566112233",
   resave: false,
@@ -46,6 +45,7 @@ app.use(session({
     //httpOnly: false
   }
 }))
+*/
 
 // connection
 const PORT = process.env.PORT || 3030
