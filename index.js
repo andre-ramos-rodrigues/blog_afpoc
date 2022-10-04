@@ -12,7 +12,7 @@ app.use(express.json())
 
 // resolving cors
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app');
+  res.set('Access-Control-Allow-Origin', '*');
   next();
 });
 
@@ -23,13 +23,6 @@ app.use(cookieParser())
 app.use("/api/posts", postRoute)
 app.use("/api/auth", authRoute)
 app.use("/api/users", usersRoute)
-
-// headers
-/*app.all("*", (req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
-  //res.set('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
-  next();
-});*/
 
 // session
 /*app.use(session({
