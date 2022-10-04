@@ -27,7 +27,7 @@ app.use("/api/users", usersRoute)
 
 // headers
 app.all("*", (req, res, next) => {
-  res.set('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
+  res.header('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
   //res.set('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
   next();
 });
