@@ -63,6 +63,8 @@ export const addPost = (req,res,next) => {
 
 // delete a single post
 export const deletePost = (req,res,next) => {
+  res.set('Access-Control-Allow-Origin', 'https://api.cloudinary.com/v1_1/dmqnk9v0d/auto/upload')
+  res.set('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
   // check if there is a token
 
   // using cookies
@@ -83,7 +85,6 @@ export const deletePost = (req,res,next) => {
     db.query(q, [postId, user.id], (err, data) => {
       if (err) return res.status(403).json("You can delete only your post!");
       
-      res.set('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
       return res.json("Post has been deleted!");
     });
   });
