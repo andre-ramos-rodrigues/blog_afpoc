@@ -9,7 +9,7 @@ export const getPosts = (req,res,next) => {
   db.query(q, [req.query.cat], (err,data) => {
     if(err) return res.status(500).json(err)
     
-    res.set('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
+    //res.set('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
     return res.status(200).json(data)
   })
 }
