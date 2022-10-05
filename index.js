@@ -11,13 +11,7 @@ const app = express()
 app.use(express.json())
 
 // resolving cors
-const origin = "https://brilliant-palmier-9298e8.netlify.app"
-app.use(
-  cors({
-    origin: origin,
-    credentials: true,
-  })
-)
+app.use(cors())
 
 // resolving cookies
 app.use(cookieParser())

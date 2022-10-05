@@ -9,6 +9,7 @@ export const getPosts = (req,res,next) => {
   db.query(q, [req.query.cat], (err,data) => {
     if(err) return res.status(500).json(err)
     
+    res.set('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
     return res.status(200).json(data)
   })
 }
@@ -22,6 +23,7 @@ export const getPost = (req,res,next) => {
   db.query(q, [req.params.id], (err,data) => {
     if(err) return res.status(500).json(err)
     
+    res.set('Access-Control-Allow-Origin', 'https://brilliant-palmier-9298e8.netlify.app')
     return res.status(200).json(data[0])
   })
 }
@@ -30,16 +32,16 @@ export const getPost = (req,res,next) => {
 export const addPost = (req,res,next) => {
   // check if there is a token
 
+  /*
   // using cookies
-  //const token = req.cookies.access_token;
+  const token = req.cookies.access_token;
 
-  // using localStorage
-  const token = req.body.token
   if (!token) return res.status(401).json("Not authenticated!");
 
   // check if the token is correct
   jwt.verify(token, "jwtkey", (err, userInfo) => {
     if (err) return res.status(402).json("Token is not valid!");
+    */
 
     const q = "INSERT INTO posts(`title`, `desc`, `img`, `cat`, `date`, `uid`) VALUES (?)"
     const values = [
@@ -53,6 +55,7 @@ export const addPost = (req,res,next) => {
     db.query(q, [values], (err,data)=>{
       if(err) return res.status(500).json(err)
 
+      
       return res.status(200).json("post created successfully")
     })
 })
@@ -65,11 +68,13 @@ export const deletePost = (req,res,next) => {
   // using cookies
   // const token = req.cookies.access_token;
 
-  //if (!token) return res.status(401).json("Not authenticated!");
+  // using localStorage
+  const token = req.body.token
+  if (!token) return res.status(401).json("Not authenticated!");
 
   // check if the token is correct
-  //jwt.verify(token, "jwtkey", (err, user) => {
-  //if (err) return res.status(402).json("Token is not valid!");
+  jwt.verify(token, "jwtkey", (err, user) => {
+    if (err) return res.status(402).json("Token is not valid!");
 
     const postId = req.params.id;
     
